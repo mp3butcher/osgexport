@@ -1267,6 +1267,7 @@ class MorphGeometry(Geometry):
         self.dataVariance = "DYNAMIC"
         self.morphTargets = []
         self.update_callbacks = []
+        self.method = "NORMALIZED"
 
     def className(self):
         return "MorphGeometry"
@@ -1282,6 +1283,7 @@ class MorphGeometry(Geometry):
         output.write(self.encode("$}\n"))
 
     def serializeContent(self, output):
+        output.write(self.encode("$#Method %s \n" % self.method))
         if self.morphTargets:
             output.write(self.encode("$#MorphTargets %s {\n" % len(self.morphTargets)))
             for target in self.morphTargets:
