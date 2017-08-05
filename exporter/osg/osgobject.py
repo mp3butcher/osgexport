@@ -1072,7 +1072,7 @@ class Geometry(Object):
         self.stateset = geometry.stateset
 
     def generateSmoothNormals(self):
-        if len(self.vertexes.getArray()) != len(self.normals.getArray()):
+        if not self.normals or len(self.vertexes.getArray()) != len(self.normals.getArray()):
             self.normals= NormalArray()
             for i in range(len(self.vertexes.getArray())):
                 self.normals.getArray().append([0,0,0])
